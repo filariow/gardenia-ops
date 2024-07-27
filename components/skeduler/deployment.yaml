@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  namespace: rosina
+  namespace: system
   name: skeduler
   labels:
     app: skeduler

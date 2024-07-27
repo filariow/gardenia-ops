@@ -28,7 +28,7 @@ apiVersion: grafana.integreatly.org/v1beta1
 kind: GrafanaFolder
 metadata:
   name: rosina
-  namespace: rosina
+  namespace: system
 spec:
   instanceSelector:
     matchLabels:
@@ -56,7 +56,7 @@ apiVersion: grafana.integreatly.org/v1beta1
 kind: GrafanaDatasource
 metadata:
   name: prometheus
-  namespace: rosina
+  namespace: system
 spec:
   datasource:
     access: proxy
@@ -76,7 +76,7 @@ apiVersion: grafana.integreatly.org/v1beta1
 kind: GrafanaDashboard
 metadata:
   name: rosina-flow
-  namespace: rosina
+  namespace: system
 spec:
   instanceSelector:
     matchLabels:

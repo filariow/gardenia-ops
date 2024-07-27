@@ -10,7 +10,6 @@ spec:
     targetRevision: main
   destination:
     server: 'https://kubernetes.default.svc'
-    namespace: rosina
   syncPolicy:
     automated:
       selfHeal: true
