@@ -1,0 +1,65 @@
+apiVersion: monitoring.coreos.com/v1
+kind: Alertmanager
+metadata:
+  name: rosina
+  namespace: system
+spec:
+  replicas: 3
+  alertmanagerConfigSelector:
+    matchLabels:
+      alertmanagerConfig: rosina
+---
+apiVersion: monitoring.coreos.com/v1alpha1
+kind: AlertmanagerConfig
+metadata:
+  name: rosina
+  namespace: system
+  labels:
+    alertmanagerConfig: rosina
+spec:
+  route:
+    groupBy:
+    - 'alertname'
+    groupWait: 10s
+    groupInterval: 5m
+    repeatInterval: 1h
+    receiver: 'telegram'
+  receivers:
+  - name: 'telegram'
+    telegramConfigs:
+    - apiURL: 'https://api.telegram.org'
+      chatID: -936938990
+      parseMode: HTML
+      message: |
+        {{ define "__rosina_dixit" -}}
+        {{ if gt (len .Alerts.Firing) 0 }}{{ range .Alerts.Firing }}
+          {{$isFlowmeter := 0}}
+          {{range .Labels.SortedPairs }}{{if and (eq .Name "job") (eq .Value "flowmeter") }}{{ $isFlowmeter = 1 }}{{end}}{{end}}
+          {{ if $isFlowmeter }}
+              St'arracquann
+          {{ else }}Labels:
+            {{ range .Labels.SortedPairs }} - {{ .Name }} = {{ .Value }}
+            {{ end }}Annotations:
+            {{ range .Annotations.SortedPairs }} - {{ .Name }} = {{ .Value }}
+            {{ end }}Source: {{ .GeneratorURL }}
+            {{ end }}
+          {{ end }}
+        {{ end}}
+        {{ if gt (len .Alerts.Resolved) 0 }}{{ range .Alerts.Resolved }}
+          {{$isFlowmeter := 0}}
+          {{range .Labels.SortedPairs }}{{if and (eq .Name "job") (eq .Value "flowmeter") }}{{$isFlowmeter = 1}}{{end}}{{end}}
+          {{ if $isFlowmeter }}
+              S'ha stutat
+          {{ else }}Labels:
+            {{ range .Labels.SortedPairs }} - {{ .Name }} = {{ .Value }}
+            {{ end }}Annotations:
+            {{ range .Annotations.SortedPairs }} - {{ .Name }} = {{ .Value }}
+            {{ end }}Source: {{ .GeneratorURL }}
+            {{ end }}
+          {{ end }}
+        {{ end}}
+        {{ end}}
+        {{ template "__rosina_dixit" . }}
+      botToken:
+        key: token
+        name: rosinabot-token
