@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: rosinabot
+  name: rosinabot
+  namespace: system
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rosinabot
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: rosinabot
+    spec:
+      containers:
+      - image: rosina/bot:latest
+        name: bot
+        imagePullPolicy: IfNotPresent
+        resources: {}
+        env:
+        - name: TOKEN
+          valueFrom:
+            secretKeyRef:
+              name: rosinabot-token
+              key: token
+        - name: "SKEDULER_ADDRESS"
+          valueFrom:
+            configMapKeyRef:
+              key: skeduler-address
+              name: bot-cm
+        - name: "PROMETHEUS_ADDRESS"
+          valueFrom:
+            configMapKeyRef:
+              key: prometheus-address
+              name: bot-cm
+        - name: "VALVED_ADDRESS"
+          valueFrom:
+            configMapKeyRef:
+              key: valved-address
+              name: bot-cm
+        - name: "ROSINA_ADDRESS"
+          valueFrom:
+            configMapKeyRef:
+              key: rosina-address
+              name: bot-cm
