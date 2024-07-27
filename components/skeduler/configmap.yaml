@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: skeduler-cm
+  namespace: system
+data:
+  address: ":12000"
+  application: "rosina"
+  run-image: "rosina/rosinacli:latest"
+  rosina-address: "192.168.1.21:12000"

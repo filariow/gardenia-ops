@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: rosina
+  name: skeduler
+  labels:
+    app: skeduler
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: skeduler
+  template:
+    metadata:
+      labels:
+        app: skeduler
+    spec:
+      serviceAccountName: skeduler
+      containers:
+        - name: skeduler
+          image: rosina/skeduler:latest
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 12000
+          env:
+            - name: "ADDRESS"
+              valueFrom:
+                configMapKeyRef:
+                  key: address
+                  name: skeduler-cm
+            - name: "APPLICATION"
+              valueFrom:
+                configMapKeyRef:
+                  key: application
+                  name: skeduler-cm
+            - name: "RUN_IMAGE"
+              valueFrom:
+                configMapKeyRef:
+                  key: run-image
+                  name: skeduler-cm
+            - name: "ROSINA_ADDRESS"
+              valueFrom:
+                configMapKeyRef:
+                  key: rosina-address
+                  name: skeduler-cm
