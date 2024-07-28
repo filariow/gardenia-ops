@@ -6,5 +6,5 @@ metadata:
 data:
   address: ":12000"
   application: "rosina"
-  run-image: "ghcr.io/filariow/gardenia/rosinacli:9312d0d@sha256:36d76641f055d854603506befcf4508ae2e78667e58ab0771a9213a77bdb2368"
+  run-image: "ghcr.io/filariow/gardenia/rosinacli:215cda9@sha256:e16f5483a891fd95c38dff67e316b8567d1a3f6bc9e46bf759b68d77acc0c136"
   rosina-address: "rpi-valve.service.com:12000"
