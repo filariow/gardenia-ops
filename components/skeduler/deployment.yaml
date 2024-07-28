@@ -18,7 +18,7 @@ spec:
       serviceAccountName: skeduler
       containers:
         - name: skeduler
-          image: rosina/skeduler:latest
+          image: ghcr.io/filariow/gardenia/skeduler:9312d0d@sha256:6790457132780d2f538009ec83c4875408ff8eeb3ef95fd7484ba0ab5973011c 
           imagePullPolicy: Never
           ports:
             - containerPort: 12000
