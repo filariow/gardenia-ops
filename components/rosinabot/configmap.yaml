@@ -5,6 +5,6 @@ metadata:
   namespace: system
 data:
   prometheus-address: "http://prometheus-operated.rosina.svc.cluster.local:9090"
-  valved-address: "192.168.1.21:12001"
-  rosina-address: "192.168.1.21:12000"
+  valved-address: "rpi-valve.service.com:12001"
+  rosina-address: "rpi-valve.service.com:12000"
   skeduler-address: "skeduler.rosina.svc.cluster.local:12000"

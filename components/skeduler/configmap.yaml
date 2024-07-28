@@ -7,4 +7,4 @@ data:
   address: ":12000"
   application: "rosina"
   run-image: "rosina/rosinacli:latest"
-  rosina-address: "192.168.1.21:12000"
+  rosina-address: "rpi-valve.service.com:12000"
