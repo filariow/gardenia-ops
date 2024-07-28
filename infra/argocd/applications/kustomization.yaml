@@ -5,4 +5,5 @@ resources:
 - op-prometheus.yaml
 - rosinabot.yaml
 - skeduler.yaml
+- dns.yaml
 namespace: argocd

@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: coredns-custom
+  namespace: kube-system
+data:
+  default.server: |
+    rpi-valve.service.com {
+        hosts {
+              192.168.1.21 rpi-valve.service.com
+              fallthrough
+        }
+    }
