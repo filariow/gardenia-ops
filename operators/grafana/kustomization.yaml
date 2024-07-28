@@ -5,7 +5,6 @@ namespace: grafana
 
 # this will automatically pull the latest release when `kustomize build` is executed
 resources:
-- namespace.yaml
 - https://github.com/grafana/grafana-operator/releases/latest/download/kustomize-cluster_scoped.yaml
 
 patches:
