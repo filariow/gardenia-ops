@@ -15,7 +15,7 @@ spec:
     alertmanagers:
     # TODO: use kustomize replacements
     - namespace: rosina
-      name: rosina
+      name: alertmanager-rosina
       port: web
   resources:
     requests:
