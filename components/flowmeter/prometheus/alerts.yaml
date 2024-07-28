@@ -21,7 +21,7 @@ spec:
     groupBy:
     - 'alertname'
     groupWait: 10s
-    groupInterval: 5m
+    groupInterval: 2m
     repeatInterval: 1h
     receiver: 'telegram'
   receivers:
