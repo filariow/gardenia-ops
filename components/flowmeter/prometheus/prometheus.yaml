@@ -94,4 +94,4 @@ spec:
       for: "10s"
       labels:
         job: flowmeter
-        namespace: system
+        namespace: rosina # use replacements
