@@ -17,7 +17,7 @@ spec:
         app: rosinabot
     spec:
       containers:
-      - image: ghcr.io/filariow/gardenia/bot:0f3df09@sha256:674d3b9be8488826cf8da057a70218fea6ed6559564b45eeab4db4566eac0758
+      - image: ghcr.io/filariow/gardenia/bot:14c557e@sha256:ff7a611665a70305748a3a31c74efa0fede7ba3a217d3427eb4df0ac5276ffb2
         name: bot
         imagePullPolicy: IfNotPresent
         resources: {}
