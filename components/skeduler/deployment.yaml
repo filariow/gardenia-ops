@@ -18,7 +18,7 @@ spec:
       serviceAccountName: skeduler
       containers:
         - name: skeduler
-          image: ghcr.io/filariow/gardenia/skeduler:215cda9@sha256:2ace2f42572ff12f5c508e71a0acb66bdac1bf1e0c1063d9db50650a113155b8  
+          image: ghcr.io/filariow/gardenia/skeduler:0f3df09@sha256:29277254dd7f1e5af47e578663d9b8f513f9862a5dd859cf011e67b82c8e828b
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 12000
