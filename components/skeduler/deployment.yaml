@@ -17,29 +17,37 @@ spec:
     spec:
       serviceAccountName: skeduler
       containers:
-        - name: skeduler
-          image: ghcr.io/filariow/gardenia/skeduler:14c557e@sha256:16376a9a64f12c65469fe3c537e5c3711d2a11a93bdf86954bda678d00a93001
-          imagePullPolicy: IfNotPresent
-          ports:
-            - containerPort: 12000
-          env:
-            - name: "ADDRESS"
-              valueFrom:
-                configMapKeyRef:
-                  key: address
-                  name: skeduler-cm
-            - name: "APPLICATION"
-              valueFrom:
-                configMapKeyRef:
-                  key: application
-                  name: skeduler-cm
-            - name: "RUN_IMAGE"
-              valueFrom:
-                configMapKeyRef:
-                  key: run-image
-                  name: skeduler-cm
-            - name: "ROSINA_ADDRESS"
-              valueFrom:
-                configMapKeyRef:
-                  key: rosina-address
-                  name: skeduler-cm
+      - name: skeduler
+        image: ghcr.io/filariow/gardenia/skeduler:14c557e@sha256:16376a9a64f12c65469fe3c537e5c3711d2a11a93bdf86954bda678d00a93001
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 12000
+        env:
+        - name: "ADDRESS"
+          valueFrom:
+            configMapKeyRef:
+              key: address
+              name: skeduler-cm
+        - name: "APPLICATION"
+          valueFrom:
+            configMapKeyRef:
+              key: application
+              name: skeduler-cm
+        - name: "RUN_IMAGE"
+          valueFrom:
+            configMapKeyRef:
+              key: run-image
+              name: skeduler-cm
+        - name: "ROSINA_ADDRESS"
+          valueFrom:
+            configMapKeyRef:
+              key: rosina-address
+              name: skeduler-cm
+        securityContext:
+          allowPrivilegeEscalation: false
+          readOnlyRootFilesystem: true
+          runAsNonRoot: true
+          runAsUser: 1000
+          capabilities:
+            drop:
+            - "ALL"
